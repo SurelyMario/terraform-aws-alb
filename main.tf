@@ -39,7 +39,7 @@ resource "aws_security_group_rule" "https_ingress" {
 }
 
 module "access_logs" {
-  count = module.this.enabled && var.access_logs_enabled && var.access_logs_s3_bucket_id == null ? 1 : 0
+  count = module.this.enabled == null ? 1 : 0
 
   source                             = "cloudposse/lb-s3-bucket/aws"
   version                            = "0.19.0"
